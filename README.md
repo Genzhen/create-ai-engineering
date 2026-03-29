@@ -12,6 +12,17 @@ npx create-ai-engineering my-project
 npx create-ai-engineering --add-to-existing .
 ```
 
+## 安装
+
+```bash
+# 使用 npx（推荐，无需安装）
+npx create-ai-engineering my-project
+
+# 或全局安装
+npm install -g create-ai-engineering
+create-ai-engineering my-project
+```
+
 ## 功能
 
 - **对抗式 Agent 体系** — Writer/Checker/Fixer 三角色对抗，确保代码质量
