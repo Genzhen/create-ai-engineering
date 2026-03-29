@@ -1192,8 +1192,14 @@ async function generateSettingsJson(targetDir) {
     hooks: {
       UserPromptSubmit: [
         {
-          hook: "./scripts/ai-tool-audit.sh hook ${settingsPath}",
-          timeout: 5000
+          matcher: "",
+          hooks: [
+            {
+              type: "command",
+              command: "./scripts/ai-tool-audit.sh hook ${settingsPath}",
+              timeout: 5000
+            }
+          ]
         }
       ]
     }

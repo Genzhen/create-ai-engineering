@@ -1,6 +1,6 @@
 {
   "name": "create-ai-engineering",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "AI 工程化项目初始化 CLI — 对抗式 Agent、Skills、安全审计、质量门控",
   "keywords": [
     "claude-code",
