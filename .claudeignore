@@ -1,0 +1,54 @@
+# AI 工程化 — Claude Code 上下文排除规则
+
+# 存档
+docs/_archive/
+
+# 构建产物
+dist/
+build/
+target/
+out/
+
+# 依赖
+node_modules/
+vendor/
+.venv/
+__pycache__/
+
+# 二进制和大文件
+*.min.js
+*.min.css
+*.map
+*.png
+*.jpg
+*.pdf
+
+# Lock 文件
+package-lock.json
+yarn.lock
+go.sum
+
+# IDE
+.idea/
+.vscode/
+.DS_Store
+
+# 环境和凭据（重要！）
+.env
+.env.local
+.env.*.local
+credentials/
+secrets/
+*.pem
+*.key
+
+# 日志
+*.log
+logs/
+
+# /ai-init 后会根据技术栈补充特定规则
+
+# Node.js CLI 项目特定规则
+tests/temp-test-project/
+coverage/
+.npm/

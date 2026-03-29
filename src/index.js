@@ -1,5 +1,8 @@
 /**
- * create-ai-engineering 主模块
+ * create-ai-engineering 主模块 - 简化版
+ *
+ * 设计理念：CLI 只负责搭建基础框架，全量安装模板文件。
+ * 技术栈选择和工程化内容补全由 /ai-init 在 AI 辅助下完成。
  */
 
 import path from 'path';
@@ -27,7 +30,7 @@ export async function createProject(projectName, options) {
     }
   }
 
-  // 收集用户输入
+  // 收集用户输入（只收集平台选择）
   let config;
   if (options.quick) {
     config = getDefaultConfig(options);
@@ -44,7 +47,7 @@ export async function createProject(projectName, options) {
     ...options
   };
 
-  // 执行安装
+  // 执行安装（全量安装）
   await installProject(config);
 
   // 输出完成信息
@@ -56,33 +59,30 @@ export async function createProject(projectName, options) {
  */
 function getDefaultConfig(options) {
   return {
-    platforms: [options.platform || 'claude-code'],
-    profile: options.profile || 'developer',
-    languages: [],
-    backend: '待定',
-    frontend: '待定',
-    database: '待定',
-    infra: '待定'
+    platforms: [options.platform || 'claude-code']
   };
 }
 
 /**
- * 输出完成信息
+ * 输出完成信息 - 强调下一步执行 /ai-init
  */
 function printCompletion(config) {
   console.log(chalk.bold.green('\n✓ 项目初始化完成!\n'));
 
-  if (config.languages.length === 0 || config.languages.includes('其他')) {
-    console.log(chalk.yellow('⚠ 自定义语言或技术栈待补充\n'));
-    console.log(chalk.dim('💡 下一步:'));
-    console.log(chalk.dim('  1. 在 Claude Code 中打开项目'));
-    console.log(chalk.dim('  2. 执行 /ai-optimize 命令'));
-    console.log(chalk.dim('  3. AI 将自动分析项目并补充完整的 AI 工程化内容\n'));
-  }
+  // 核心提示：下一步必须执行 /ai-init
+  console.log(chalk.bold.yellow('═══════════════════════════════════════════════'));
+  console.log(chalk.bold.yellow('  重要：下一步必须执行 /ai-init'));
+  console.log(chalk.bold.yellow('═══════════════════════════════════════════════\n'));
 
-  console.log(chalk.dim('已创建:'));
-  console.log(chalk.dim('  .claude/agents/     — 对抗式 Agent'));
-  console.log(chalk.dim('  skills/             — 工作流 Skills'));
+  console.log(chalk.cyan('AI 将通过苏格拉底式对话帮你：'));
+  console.log(chalk.dim('  1. 分析项目需求'));
+  console.log(chalk.dim('  2. 确认技术方案'));
+  console.log(chalk.dim('  3. 补全工程化配置'));
+  console.log(chalk.dim('  4. 激活相关功能\n'));
+
+  console.log(chalk.dim('已安装的功能模块（参考文档状态）：'));
+  console.log(chalk.dim('  .claude/agents/     — 对抗式 Agent (Writer/Checker/Fixer)'));
+  console.log(chalk.dim('  skills/             — 工作流 Skills (TDD/调试/审查等)'));
   console.log(chalk.dim('  commands/           — Slash Commands'));
   console.log(chalk.dim('  docs/ai-engineering/— 团队共享文档'));
   console.log(chalk.dim('  scripts/            — 工具脚本'));
@@ -90,8 +90,8 @@ function printCompletion(config) {
   console.log(chalk.dim('  AGENTS.md           — 跨平台 Agent 定义\n'));
 
   if (!config.isCurrentDir) {
-    console.log(chalk.cyan(`cd ${config.projectName}`));
+    console.log(chalk.bold.cyan(`cd ${config.projectName}`));
   }
-  console.log(chalk.cyan('git add . && git commit -m "初始化 AI 工程化配置"'));
+  console.log(chalk.bold.cyan('在 Claude Code 中执行: /ai-init'));
   console.log('');
 }

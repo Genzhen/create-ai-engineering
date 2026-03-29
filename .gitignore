@@ -1,3 +1,9 @@
 node_modules/
 .DS_Store
 *.log
+
+# 测试覆盖率
+coverage/
+
+# 测试临时文件
+tests/temp-*/

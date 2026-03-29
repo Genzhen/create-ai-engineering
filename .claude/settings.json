@@ -1,0 +1,10 @@
+{
+  "hooks": {
+    "UserPromptSubmit": [
+      {
+        "hook": "./scripts/ai-tool-audit.sh hook ${settingsPath}",
+        "timeout": 5000
+      }
+    ]
+  }
+}
