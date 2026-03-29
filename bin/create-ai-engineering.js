@@ -11,13 +11,19 @@
 import { Command } from 'commander';
 import chalk from 'chalk';
 import { createProject } from '../src/index.js';
+import { readFileSync } from 'fs';
+import { fileURLToPath } from 'url';
+import { dirname, join } from 'path';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const { version } = JSON.parse(readFileSync(join(__dirname, '../package.json'), 'utf-8'));
 
 const program = new Command();
 
 program
   .name('create-ai-engineering')
   .description('AI 工程化项目初始化 CLI')
-  .version('0.1.0')
+  .version(version)
   .argument('[project-name]', '项目名称', '.')
   .option('-p, --profile <profile>', '安装配置 (core|developer|security|full)', 'developer')
   .option('-q, --quick', '快速模式（跳过交互）', false)

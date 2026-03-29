@@ -1,6 +1,6 @@
 {
   "name": "create-ai-engineering",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "description": "AI 工程化项目初始化 CLI — 对抗式 Agent、Skills、安全审计、质量门控",
   "keywords": [
     "claude-code",
@@ -27,13 +27,11 @@
   "homepage": "https://github.com/Genzhen/create-ai-engineering#readme",
   "type": "module",
   "bin": {
-    "create-ai-engineering": "./bin/create-ai-engineering.js"
+    "create-ai-engineering": "bin/create-ai-engineering.js"
   },
   "files": [
     "bin/",
-    "src/",
-    "manifests/",
-    "templates/"
+    "src/"
   ],
   "scripts": {
     "test": "vitest run",
